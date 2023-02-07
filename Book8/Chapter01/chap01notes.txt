@@ -1,0 +1,33 @@
+Working with Files
+
+===============================================================
+
+In this chapter, you discover the ins and outs of working with files and directories.
+
+*Using a File Visitor to Walk a File Tree
+-----------------------------------------
+1. Create a file-visitor class, which is extended from FileVisitor or, more
+often, SimpleFileVisitor.
+The SimpleFileVisitor class defines several methods that are called for
+every file in the file tree,
+
+2.In the file visitor, override one or more methods that are defined by the
+SimpleFileVisitor class.
+These methods are where you write the code that you want to execute for
+every file visited when the directory tree is walked. You always want to override
+at least three of the methods explained kin the book, or you can go through the code to understand better:
+• visitFile, which is called for every file in the file tree
+• visitFileFailed, which is called for every file that can’t be accessed
+(usually due to permissions issues)
+• preVisitDirectoryFailed, which is called for every directory that
+couldn’t be accessed
+
+3. Create a Path object that indicates the starting point (that is, the root) of
+the file tree you want to walk.
+If you want to visit all the files on your C: drive, for example, this path should
+point to C:\.
+
+4. Call the walkFileTree method of the static Files class to process the
+files.
+This method takes just two arguments: the Path object (which identifies the
+root of your file tree) and an instance of your file-visitor class
